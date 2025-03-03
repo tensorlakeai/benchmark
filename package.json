@@ -9,7 +9,7 @@
     "benchmark": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^1.0.5",
+    "@ai-sdk/anthropic": "^1.1.13",
     "@ai-sdk/azure": "^1.1.9",
     "@ai-sdk/deepseek": "^0.1.6",
     "@ai-sdk/google": "^1.1.10",
@@ -21,7 +21,7 @@
     "@google/generative-ai": "^0.21.0",
     "@huggingface/hub": "^1.0.1",
     "@prisma/client": "^6.3.1",
-    "ai": "^4.1.24",
+    "ai": "^4.1.47",
     "axios": "^1.7.9",
     "cli-progress": "^3.12.0",
     "dotenv": "^16.4.7",

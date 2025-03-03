@@ -24,20 +24,6 @@ export const loadFromDb = async (): Promise<Input[]> => {
 
   try {
     const result = await pool.query(`
-      WITH synthetic_ranked AS (
-        SELECT
-          url AS "imageUrl",
-          config AS "metadata",
-          schema AS "jsonSchema",
-          extracted_json AS "trueJsonOutput",
-          markdown AS "trueMarkdownOutput",
-          ROW_NUMBER() OVER (
-            PARTITION BY config->>'format'
-            ORDER BY created_at
-          ) as rn
-        FROM documents
-        WHERE is_synthetic = true
-      )
       SELECT
         url AS "imageUrl",
         config AS "metadata",
@@ -45,16 +31,9 @@ export const loadFromDb = async (): Promise<Input[]> => {
         extracted_json AS "trueJsonOutput",
         markdown AS "trueMarkdownOutput"
       FROM documents
-      WHERE is_synthetic = false
-      UNION ALL
-      SELECT
-        "imageUrl",
-        "metadata",
-        "jsonSchema",
-        "trueJsonOutput",
-        "trueMarkdownOutput"
-      FROM synthetic_ranked
-      WHERE rn <= 10;
+      WHERE include_in_training = FALSE
+      ORDER BY RANDOM()
+      LIMIT 100;
     `);
 
     return result.rows as Input[];

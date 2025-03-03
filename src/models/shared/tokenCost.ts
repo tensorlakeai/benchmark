@@ -21,6 +21,10 @@ export const TOKEN_COST = {
     input: 3,
     output: 15,
   },
+  'claude-3-7-sonnet-20250219': {
+    input: 3,
+    output: 15,
+  },
   'deepseek-chat': {
     input: 0.14,
     output: 0.28,
