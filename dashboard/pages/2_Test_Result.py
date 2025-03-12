@@ -67,8 +67,29 @@ def display_json_diff(test_case, container):
 
 
 def display_file_preview(test_case, container):
-    """Display the original file preview"""
+    """Display the original file preview and model information"""
     container.subheader("File Preview")
+
+    # Display model information
+    model_info = container.expander("Model Information", expanded=True)
+    with model_info:
+        cols = model_info.columns(2)
+
+        # Display OCR model if available
+        ocr_model = test_case.get("ocrModel", "Not specified")
+        cols[0].markdown(f"**OCR Model:** {ocr_model}")
+
+        # Display extraction model if available
+        extraction_model = test_case.get("extractionModel", "Not specified")
+        cols[1].markdown(f"**Extraction Model:** {extraction_model}")
+
+        # Display direct image extraction flag if available
+        direct_image = test_case.get("directImageExtraction", False)
+        model_info.markdown(
+            f"**Direct Image Extraction:** {'Yes' if direct_image else 'No'}"
+        )
+
+    # Display file preview
     if "fileUrl" in test_case:
         container.image(test_case["fileUrl"], width=700)
     else:
