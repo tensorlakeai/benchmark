@@ -45,6 +45,10 @@ export const TOKEN_COST = {
     input: 2.5,
     output: 10,
   },
+  'gpt-4o-2024-11-20': {
+    input: 2.5,
+    output: 10,
+  },
   'gpt-4o-mini': {
     input: 0.15,
     output: 0.6,

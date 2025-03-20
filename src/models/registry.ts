@@ -8,7 +8,14 @@ import { OmniAIProvider } from './omniAI';
 import { UnstructuredProvider } from './unstructured';
 import { ZeroxProvider } from './zerox';
 
-export const OPENAI_MODELS = ['gpt-4o-mini', 'gpt-4o', 'o1', 'o1-mini', 'o3-mini'];
+export const OPENAI_MODELS = [
+  'gpt-4o-mini',
+  'gpt-4o',
+  'o1',
+  'o1-mini',
+  'o3-mini',
+  'gpt-4o-2024-11-20',
+];
 export const AZURE_OPENAI_MODELS = [
   'azure-gpt-4o-mini',
   'azure-gpt-4o',

@@ -12,7 +12,8 @@ RULES:
 `;
 
 export const JSON_EXTRACTION_SYSTEM_PROMPT = `
-  Extract the following JSON schema from the text and images if provided.
+  Extract data from the following document based on the JSON schema.
+  Return null if the document does not contain information relevant to schema.
   Return only the JSON with no explanation text.
 `;
 
