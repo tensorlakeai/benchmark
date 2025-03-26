@@ -34,6 +34,11 @@ const MODEL_CONCURRENCY = {
   'gemini-2.0-flash-001': 30,
   'mistral-ocr': 5,
   'gpt-4o': 50,
+  'qwen/qwen2.5-vl-32b-instruct:free': 2,
+  'qwen/qwen-2.5-vl-72b-instruct': 5,
+  'google/gemma-3-27b-it': 10,
+  'meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo': 10,
+  'meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo': 10,
   omniai: 30,
   zerox: 50,
 };

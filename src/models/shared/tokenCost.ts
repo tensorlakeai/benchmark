@@ -41,6 +41,10 @@ export const TOKEN_COST = {
     input: 0.1,
     output: 0.4,
   },
+  'gemini-2.5-pro-exp-03-25': {
+    input: 0, // TODO: Add cost
+    output: 0, // TODO: Add cost
+  },
   'gpt-4o': {
     input: 2.5,
     output: 10,
@@ -65,10 +69,41 @@ export const TOKEN_COST = {
     input: 1.1,
     output: 4.4,
   },
-  // Zerox uses GPT-4o
   zerox: {
     input: 2.5,
     output: 10,
+  },
+  'qwen/qwen2.5-vl-32b-instruct:free': {
+    input: 0, // TODO: Add cost
+    output: 0, // TODO: Add cost
+  },
+  'qwen/qwen-2.5-vl-72b-instruct': {
+    input: 0.7,
+    output: 0.7,
+  },
+  'google/gemma-3-27b-it': {
+    input: 0.1,
+    output: 0.2,
+  },
+  'deepseek/deepseek-chat-v3-0324': {
+    input: 0.27,
+    output: 1.1,
+  },
+  'meta-llama/llama-3.2-11b-vision-instruct': {
+    input: 0.055,
+    output: 0.055,
+  },
+  'meta-llama/llama-3.2-90b-vision-instruct': {
+    input: 0.8,
+    output: 1.6,
+  },
+  'meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo': {
+    input: 0.18,
+    output: 0.18,
+  },
+  'meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo': {
+    input: 1.2,
+    output: 1.2,
   },
 };
 

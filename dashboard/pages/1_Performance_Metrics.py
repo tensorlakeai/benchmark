@@ -63,30 +63,29 @@ def create_model_comparison_table(results):
         stats = model_stats[model_key]
         stats["count"] += 1
         stats["text_accuracy"] += test.get("levenshteinDistance", 0) or 0
-        stats["total_cost"] += test["usage"]["totalCost"]
-        stats["ocr_cost"] += test["usage"].get("ocr", {}).get("totalCost", 0)
-        stats["ocr_latency"] += test["usage"].get("ocr", {}).get("duration", 0) / 1000
-        stats["ocr_input_tokens"] += test["usage"].get("ocr", {}).get("inputTokens", 0)
-        stats["ocr_output_tokens"] += (
-            test["usage"].get("ocr", {}).get("outputTokens", 0)
-        )
+        stats["total_cost"] += test.get("usage", {}).get("totalCost", 0)
+        usage = test.get("usage", {})
+        stats["ocr_cost"] += usage.get("ocr", {}).get("totalCost", 0)
+        stats["ocr_latency"] += usage.get("ocr", {}).get("duration", 0) / 1000
+        stats["ocr_input_tokens"] += usage.get("ocr", {}).get("inputTokens", 0)
+        stats["ocr_output_tokens"] += usage.get("ocr", {}).get("outputTokens", 0)
 
         # Add token counting
-        if "extraction" in test["usage"]:
-            stats["extraction_input_tokens"] += test["usage"]["extraction"].get(
+        if usage.get("extraction"):
+            stats["extraction_input_tokens"] += usage.get("extraction", {}).get(
                 "inputTokens", 0
             )
-            stats["extraction_output_tokens"] += test["usage"]["extraction"].get(
+            stats["extraction_output_tokens"] += usage.get("extraction", {}).get(
                 "outputTokens", 0
             )
 
         # Only add JSON accuracy and extraction stats if extraction was performed
-        if "jsonAccuracy" in test and test["usage"].get("extraction"):
+        if "jsonAccuracy" in test and usage.get("extraction"):
             stats["extraction_count"] += 1
             stats["json_accuracy"] += test["jsonAccuracy"]
-            stats["extraction_cost"] += test["usage"]["extraction"].get("totalCost", 0)
+            stats["extraction_cost"] += usage.get("extraction", {}).get("totalCost", 0)
             stats["extraction_latency"] += (
-                test["usage"]["extraction"].get("duration", 0) / 1000
+                usage.get("extraction", {}).get("duration", 0) / 1000
             )
 
     # Calculate averages

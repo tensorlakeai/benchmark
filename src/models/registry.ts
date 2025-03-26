@@ -5,6 +5,8 @@ import { GoogleDocumentAIProvider } from './googleDocumentAI';
 import { LLMProvider } from './llm';
 import { MistralProvider } from './mistral';
 import { OmniAIProvider } from './omniAI';
+import { OpenRouterProvider } from './openrouter';
+import { TogetherProvider } from './togetherai';
 import { UnstructuredProvider } from './unstructured';
 import { ZeroxProvider } from './zerox';
 
@@ -28,19 +30,24 @@ export const ANTHROPIC_MODELS = [
 ];
 export const DEEPSEEK_MODELS = ['deepseek-chat'];
 export const GOOGLE_GENERATIVE_AI_MODELS = [
-  'gemini-2.0-flash-001',
   'gemini-1.5-pro',
   'gemini-1.5-flash',
+  'gemini-2.0-flash-001',
+  'gemini-2.5-pro-exp-03-25',
 ];
-export const FINETUNED_MODELS = [
-  'ft:gpt-4o-2024-08-06:omniai::Arxk5CGQ', // 1040 - 25
-  'ft:gpt-4o-2024-08-06:omniai::ArxtsMva', // 1040 - 50
-  'ft:gpt-4o-2024-08-06:omniai::ArxvfLvw', // 1040 - 100
-  'ft:gpt-4o-2024-08-06:omniai::AryLM0UQ', // 1040 - 250
-  'ft:gpt-4o-2024-08-06:omniai::Arz2HbeO', // 1040 - 500
-  'ft:gpt-4o-2024-08-06:omniai::Arzh2QBC', // 1040 - 1000
-  'ft:gpt-4o-2024-08-06:omniai::AtOXM6UJ', // Full Dataset - 250
+export const OPENROUTER_MODELS = [
+  'qwen/qwen2.5-vl-32b-instruct:free',
+  'qwen/qwen-2.5-vl-72b-instruct',
+  'google/gemma-3-27b-it',
+  'deepseek/deepseek-chat-v3-0324',
+  'meta-llama/llama-3.2-11b-vision-instruct',
+  'meta-llama/llama-3.2-90b-vision-instruct',
 ];
+export const TOGETHER_MODELS = [
+  'meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo',
+  'meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo',
+];
+export const FINETUNED_MODELS = [];
 
 export const MODEL_PROVIDERS = {
   anthropic: {
@@ -82,6 +89,14 @@ export const MODEL_PROVIDERS = {
   openai: {
     models: OPENAI_MODELS,
     provider: LLMProvider,
+  },
+  openrouter: {
+    models: OPENROUTER_MODELS,
+    provider: OpenRouterProvider,
+  },
+  together: {
+    models: TOGETHER_MODELS,
+    provider: TogetherProvider,
   },
   unstructured: {
     models: ['unstructured'],

@@ -33,7 +33,7 @@ export const loadFromDb = async (): Promise<Input[]> => {
       FROM documents
       WHERE include_in_training = FALSE
       ORDER BY created_at
-      LIMIT 200;
+      LIMIT 1000;
     `);
 
     return result.rows as Input[];
