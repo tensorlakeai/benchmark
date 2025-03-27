@@ -68,9 +68,12 @@ You can view configuration for each model in the [src/models/](./src/models/) fo
 | Google         | `google-document-ai`                                         | ✅  | ❌              | `GOOGLE_LOCATION`, `GOOGLE_PROJECT_ID`, `GOOGLE_PROCESSOR_ID`, `GOOGLE_APPLICATION_CREDENTIALS_PATH` |
 | Mistral        | `mistral-ocr`                                                | ✅  | ❌              | `MISTRAL_API_KEY`                                                        |
 | OmniAI         | `omniai`                                                     | ✅  | ✅              | `OMNIAI_API_KEY`, `OMNIAI_API_URL`                                                                   |
-| OpenAI         | `gpt-4o-mini`, `gpt-4o`                                      | ✅  | ✅              | `OPENAI_API_KEY`                                                                                     |
+| OpenAI         | `gpt-4o`                                      | ✅  | ✅              | `OPENAI_API_KEY`                                                                                     |
 | Unstructured   | `unstructured`                                               | ✅  | ❌              | `UNSTRUCTURED_API_KEY`                                                                               |
 | ZeroX          | `zerox`                                                      | ✅  | ❌              | `OPENAI_API_KEY`                                                                                     |
+| Gemma 3      | `google/gemma-3-27b-it`                                      | ✅  | ❌              |                                        |
+| Qwen 2.5     | `qwen2.5-vl-32b-instruct`, `qwen2.5-vl-72b-instruct`       | ✅  | ❌              |                                        |
+| Llama 3.2     | `meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo`  , `meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo`       | ✅  | ❌              |                                        |
 
 - LLMS are instructed to use the following [system prompts](./src/models/shared/prompt.ts) for OCR and JSON extraction.
 - For Google Document AI, you need to include `google_credentials.json` in the `data` folder.
