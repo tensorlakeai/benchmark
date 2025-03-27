@@ -73,13 +73,13 @@ export const TOKEN_COST = {
     input: 2.5,
     output: 10,
   },
-  'qwen/qwen2.5-vl-32b-instruct:free': {
+  'qwen2.5-vl-32b-instruct': {
     input: 0, // TODO: Add cost
     output: 0, // TODO: Add cost
   },
-  'qwen/qwen-2.5-vl-72b-instruct': {
-    input: 0.7,
-    output: 0.7,
+  'qwen2.5-vl-72b-instruct': {
+    input: 0, // TODO: Add cost
+    output: 0, // TODO: Add cost
   },
   'google/gemma-3-27b-it': {
     input: 0.1,

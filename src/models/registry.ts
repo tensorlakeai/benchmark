@@ -1,10 +1,12 @@
 import { AzureDocumentIntelligenceProvider } from './azure';
 import { AWSTextractProvider } from './awsTextract';
+import { DashscopeProvider } from './dashscope';
 import { GeminiProvider } from './gemini';
 import { GoogleDocumentAIProvider } from './googleDocumentAI';
 import { LLMProvider } from './llm';
 import { MistralProvider } from './mistral';
 import { OmniAIProvider } from './omniAI';
+import { OpenAIProvider } from './openai';
 import { OpenRouterProvider } from './openrouter';
 import { TogetherProvider } from './togetherai';
 import { UnstructuredProvider } from './unstructured';
@@ -38,7 +40,7 @@ export const GOOGLE_GENERATIVE_AI_MODELS = [
 export const OPENROUTER_MODELS = [
   'qwen/qwen2.5-vl-32b-instruct:free',
   'qwen/qwen-2.5-vl-72b-instruct',
-  'google/gemma-3-27b-it',
+  // 'google/gemma-3-27b-it',
   'deepseek/deepseek-chat-v3-0324',
   'meta-llama/llama-3.2-11b-vision-instruct',
   'meta-llama/llama-3.2-90b-vision-instruct',
@@ -90,6 +92,10 @@ export const MODEL_PROVIDERS = {
     models: OPENAI_MODELS,
     provider: LLMProvider,
   },
+  openaiBase: {
+    models: ['google/gemma-3-27b-it'],
+    provider: OpenAIProvider,
+  },
   openrouter: {
     models: OPENROUTER_MODELS,
     provider: OpenRouterProvider,
@@ -97,6 +103,10 @@ export const MODEL_PROVIDERS = {
   together: {
     models: TOGETHER_MODELS,
     provider: TogetherProvider,
+  },
+  dashscope: {
+    models: ['qwen2.5-vl-32b-instruct', 'qwen2.5-vl-72b-instruct'],
+    provider: DashscopeProvider,
   },
   unstructured: {
     models: ['unstructured'],
