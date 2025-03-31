@@ -69,6 +69,10 @@ export const TOKEN_COST = {
     input: 1.1,
     output: 4.4,
   },
+  'chatgpt-4o-latest': {
+    input: 2.5,
+    output: 10,
+  },
   zerox: {
     input: 2.5,
     output: 10,

@@ -13,6 +13,7 @@ import { UnstructuredProvider } from './unstructured';
 import { ZeroxProvider } from './zerox';
 
 export const OPENAI_MODELS = [
+  'chatgpt-4o-latest',
   'gpt-4o-mini',
   'gpt-4o',
   'o1',
