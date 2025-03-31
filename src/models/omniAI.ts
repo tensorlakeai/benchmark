@@ -1,4 +1,5 @@
 import axios from 'axios';
+import FormData from 'form-data';
 
 import { JsonSchema } from '../types';
 import { ModelProvider } from './base';
@@ -29,7 +30,7 @@ export const sendExtractRequest = async (
   }
 
   const formData = new FormData();
-  formData.append('documentUrl', imageUrl);
+  formData.append('url', imageUrl);
 
   // Add optional parameters if provided
   if (schema) {
@@ -38,17 +39,17 @@ export const sendExtractRequest = async (
 
   try {
     const response = await axios.post(
-      `${process.env.OMNIAI_API_URL}/experimental/extract`,
+      `${process.env.OMNIAI_API_URL}/extract/sync`,
       formData,
       {
         headers: {
           'x-api-key': apiKey,
-          'Content-Type': 'multipart/form-data',
+          ...formData.getHeaders(),
         },
       },
     );
 
-    return response.data;
+    return response.data.result;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(
