@@ -173,16 +173,47 @@ def main():
         f"{test['id']}": idx for idx, test in enumerate(results_with_diffs)
     }
 
+    # Initialize session state for selected index if it doesn't exist
+    if "selected_test_idx" not in st.session_state:
+        st.session_state.selected_test_idx = 0
+
     with col2:
-        selected_test_idx = st.selectbox(
-            "Select Test Case (Only Cases with Differences)",
-            options=list(test_case_labels.keys()),
-            format_func=lambda x: f"{x}",
-        )
-        selected_test_idx = test_case_labels[selected_test_idx]  # Get the actual index
+        # Create a row for the dropdown and navigation buttons
+        dropdown_col, nav_col_1, nav_col_2 = st.columns([4, 0.5, 0.5])
+
+        with dropdown_col:
+            # Update session state when dropdown changes
+            selected_test_id = st.selectbox(
+                "Select Test Case (Only Cases with Differences)",
+                options=list(test_case_labels.keys()),
+                format_func=lambda x: f"{x}",
+                index=st.session_state.selected_test_idx,
+            )
+            st.session_state.selected_test_idx = test_case_labels[selected_test_id]
+
+        with nav_col_1:
+            st.write(
+                '<div style="display: flex; justify-content: center; align-items: center;">',
+                unsafe_allow_html=True,
+            )
+            # Add navigation buttons
+            if st.button("←"):
+                if st.session_state.selected_test_idx > 0:
+                    st.session_state.selected_test_idx -= 1
+                    st.rerun()
+
+        with nav_col_2:
+            st.write(
+                '<div style="display: flex; justify-content: center; align-items: center;">',
+                unsafe_allow_html=True,
+            )
+            if st.button("→"):
+                if st.session_state.selected_test_idx < len(results_with_diffs) - 1:
+                    st.session_state.selected_test_idx += 1
+                    st.rerun()
 
     # 4. Load only the selected test case
-    selected_result_id = results_with_diffs[selected_test_idx]["id"]
+    selected_result_id = results_with_diffs[st.session_state.selected_test_idx]["id"]
     detailed_data = load_one_result(selected_timestamp, selected_result_id)
     test_case = detailed_data["result"]
 
