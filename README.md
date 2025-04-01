@@ -4,7 +4,12 @@
 
 A benchmarking tool that compares OCR and data extraction capabilities of different large multimodal models such as gpt-4o, evaluating both text and json extraction accuracy. The goal of this benchmark is to publish a comprehensive benchmark of OCRaccuracy across traditional OCR providers and multimodal Language Models. The evaluation dataset and methodologies are all Open Source, and we encourage expanding this benchmark to encompass any additional providers.
 
+[**Open Source LLM Benchmark Results (Mar 2025)**](https://getomni.ai/blog/benchmarking-open-source-models-for-ocr) | [**Dataset**](https://huggingface.co/datasets/getomni-ai/ocr-benchmark)
+
 [**Benchmark Results (Feb 2025)**](https://getomni.ai/ocr-benchmark) | [**Dataset**](https://huggingface.co/datasets/getomni-ai/ocr-benchmark)
+
+<img width="898" alt="image" src="https://github.com/user-attachments/assets/ec887724-4514-479d-b8e4-ce04139cb672" />
+
 
 ## Methodology
 
