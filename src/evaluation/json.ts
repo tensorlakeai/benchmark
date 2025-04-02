@@ -32,11 +32,21 @@ export interface AccuracyResult {
 export const calculateJsonAccuracy = (
   actual: Record<string, any>,
   predicted: Record<string, any>,
+  ignoreCases: boolean = false,
 ): AccuracyResult => {
+  // Convert strings to uppercase if ignoreCases is true
+  const processedActual = ignoreCases ? convertStringsToUppercase(actual) : actual;
+  const processedPredicted = ignoreCases
+    ? convertStringsToUppercase(predicted)
+    : predicted;
+
   // Get the diff result
-  const fullDiffResult = diff(actual, predicted, { full: true, sort: true });
-  const diffResult = diff(actual, predicted, { sort: true });
-  const totalFields = countTotalFields(actual);
+  const fullDiffResult = diff(processedActual, processedPredicted, {
+    full: true,
+    sort: true,
+  });
+  const diffResult = diff(processedActual, processedPredicted, { sort: true });
+  const totalFields = countTotalFields(processedActual);
 
   if (!diffResult) {
     // If there's no diff, the JSONs are identical
@@ -67,6 +77,32 @@ export const calculateJsonAccuracy = (
     jsonDiffStats: changes,
     totalFields,
   };
+};
+
+/**
+ * Recursively converts all string values in an object to uppercase
+ */
+const convertStringsToUppercase = (obj: any): any => {
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map((item) => convertStringsToUppercase(item));
+  }
+
+  const result: Record<string, any> = {};
+  for (const key in obj) {
+    const value = obj[key];
+    if (typeof value === 'string') {
+      result[key] = value.toUpperCase();
+    } else if (typeof value === 'object' && value !== null) {
+      result[key] = convertStringsToUppercase(value);
+    } else {
+      result[key] = value;
+    }
+  }
+  return result;
 };
 
 export const countChanges = (diffResult: any): DiffStats => {
