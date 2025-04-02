@@ -1,3 +1,5 @@
+import base64
+import requests
 import streamlit as st
 from difflib import HtmlDiff
 from utils.data_loader import (
@@ -89,9 +91,26 @@ def display_file_preview(test_case, container):
             f"**Direct Image Extraction:** {'Yes' if direct_image else 'No'}"
         )
 
+    def show_pdf(url):
+
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an exception for bad status codes
+            base64_pdf = base64.b64encode(response.content).decode("utf-8")
+            pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="520" height="1000" type="application/pdf"></iframe>'
+            st.markdown(pdf_display, unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Failed to load PDF: {str(e)}")
+            st.markdown(f"You can [view the PDF directly]({url}) in a new tab.")
+
     # Display file preview
     if "fileUrl" in test_case:
-        container.image(test_case["fileUrl"], width=700)
+        file_url = test_case["fileUrl"]
+        if file_url.lower().endswith(".pdf"):
+            with container:
+                show_pdf(file_url)
+        else:
+            container.image(file_url, width=700)
     else:
         container.warning("No file preview available")
 
