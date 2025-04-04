@@ -17,6 +17,10 @@ export const TOKEN_COST = {
     input: 1.1,
     output: 4.4,
   },
+  'azure-o3-mini': {
+    input: 1.1,
+    output: 4.4,
+  },
   'claude-3-5-sonnet-20241022': {
     input: 3,
     output: 15,

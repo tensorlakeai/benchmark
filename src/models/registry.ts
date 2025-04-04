@@ -26,6 +26,7 @@ export const AZURE_OPENAI_MODELS = [
   'azure-gpt-4o',
   'azure-o1',
   'azure-o1-mini',
+  'azure-o3-mini',
 ];
 export const ANTHROPIC_MODELS = [
   'claude-3-5-sonnet-20241022',

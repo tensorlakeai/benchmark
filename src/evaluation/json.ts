@@ -123,7 +123,13 @@ export const countChanges = (diffResult: any): DiffStats => {
 
       if (Array.isArray(value)) {
         // Handle array diffs
-        value.forEach(([operation, element]) => {
+        value.forEach((item) => {
+          // Check if item is in the expected [operation, element] format
+          if (!Array.isArray(item) || item.length !== 2) {
+            return;
+          }
+
+          const [operation, element] = item;
           if (element === null || typeof element !== 'object') {
             // Handle primitive value changes in arrays
             switch (operation) {
