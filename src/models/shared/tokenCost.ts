@@ -117,6 +117,14 @@ export const TOKEN_COST = {
     input: 1.2,
     output: 1.2,
   },
+  'meta-llama/Llama-4-Scout-17B-16E-Instruct': {
+    input: 0.18,
+    output: 0.59,
+  },
+  'meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8': {
+    input: 0.27,
+    output: 0.85,
+  },
 };
 
 export const calculateTokenCost = (

@@ -51,6 +51,8 @@ export const OPENROUTER_MODELS = [
 export const TOGETHER_MODELS = [
   'meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo',
   'meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo',
+  'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+  'meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8',
 ];
 export const FINETUNED_MODELS = [];
 
