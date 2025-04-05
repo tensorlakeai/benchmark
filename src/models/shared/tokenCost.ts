@@ -46,8 +46,12 @@ export const TOKEN_COST = {
     output: 0.4,
   },
   'gemini-2.5-pro-exp-03-25': {
-    input: 0, // TODO: Add cost
-    output: 0, // TODO: Add cost
+    input: 0,
+    output: 0,
+  },
+  'gemini-2.5-pro-preview-03-25': {
+    input: 1.25,
+    output: 10,
   },
   'gpt-4o': {
     input: 2.5,
