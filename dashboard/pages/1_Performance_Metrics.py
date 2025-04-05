@@ -48,9 +48,9 @@ def create_model_comparison_table(results):
                 "count": 0,
                 "json_accuracy": 0,
                 "text_accuracy": 0,
-                "total_cost": 0,
-                "ocr_cost": 0,
-                "extraction_cost": 0,
+                "total_cost": 0.0,
+                "ocr_cost": 0.0,
+                "extraction_cost": 0.0,
                 "ocr_latency": 0,
                 "extraction_latency": 0,
                 "extraction_count": 0,
@@ -63,9 +63,15 @@ def create_model_comparison_table(results):
         stats = model_stats[model_key]
         stats["count"] += 1
         stats["text_accuracy"] += test.get("levenshteinDistance", 0) or 0
-        stats["total_cost"] += test.get("usage", {}).get("totalCost", 0)
+        # Ensure None values are converted to 0.0
+        totalCost = test.get("usage", {}).get("totalCost")
+        stats["total_cost"] += 0.0 if totalCost is None else totalCost
         usage = test.get("usage", {})
-        stats["ocr_cost"] += usage.get("ocr", {}).get("totalCost", 0)
+
+        # Handle possible None values in ocr cost
+        ocrCost = usage.get("ocr", {}).get("totalCost")
+        stats["ocr_cost"] += 0.0 if ocrCost is None else ocrCost
+
         stats["ocr_latency"] += usage.get("ocr", {}).get("duration", 0) / 1000
         stats["ocr_input_tokens"] += usage.get("ocr", {}).get("inputTokens", 0)
         stats["ocr_output_tokens"] += usage.get("ocr", {}).get("outputTokens", 0)
@@ -83,7 +89,11 @@ def create_model_comparison_table(results):
         if "jsonAccuracy" in test and usage.get("extraction"):
             stats["extraction_count"] += 1
             stats["json_accuracy"] += test["jsonAccuracy"]
-            stats["extraction_cost"] += usage.get("extraction", {}).get("totalCost", 0)
+            # Handle possible None values in extraction cost
+            extractionCost = usage.get("extraction", {}).get("totalCost")
+            stats["extraction_cost"] += (
+                0.0 if extractionCost is None else extractionCost
+            )
             stats["extraction_latency"] += (
                 usage.get("extraction", {}).get("duration", 0) / 1000
             )
