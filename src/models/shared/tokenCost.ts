@@ -9,6 +9,10 @@ export const TOKEN_COST = {
     input: 0.15,
     output: 0.6,
   },
+  'azure-gpt-4.1-2025-04-14': {
+    input: 2,
+    output: 8,
+  },
   'azure-o1': {
     input: 15,
     output: 60,
@@ -64,6 +68,10 @@ export const TOKEN_COST = {
   'gpt-4o-mini': {
     input: 0.15,
     output: 0.6,
+  },
+  'gpt-4.1-2025-04-14': {
+    input: 2,
+    output: 8,
   },
   o1: {
     input: 15,

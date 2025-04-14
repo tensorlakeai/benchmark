@@ -20,6 +20,7 @@ export const OPENAI_MODELS = [
   'o1-mini',
   'o3-mini',
   'gpt-4o-2024-11-20',
+  'gpt-4.1-2025-04-14',
 ];
 export const AZURE_OPENAI_MODELS = [
   'azure-gpt-4o-mini',
@@ -27,6 +28,7 @@ export const AZURE_OPENAI_MODELS = [
   'azure-o1',
   'azure-o1-mini',
   'azure-o3-mini',
+  'azure-gpt-4.1-2025-04-14',
 ];
 export const ANTHROPIC_MODELS = [
   'claude-3-5-sonnet-20241022',
