@@ -9,9 +9,17 @@ export const TOKEN_COST = {
     input: 0.15,
     output: 0.6,
   },
-  'azure-gpt-4.1-2025-04-14': {
+  'azure-gpt-4.1': {
     input: 2,
     output: 8,
+  },
+  'azure-gpt-4.1-mini': {
+    input: 0.4,
+    output: 1.6,
+  },
+  'azure-gpt-4.1-nano': {
+    input: 0.1,
+    output: 0.4,
   },
   'azure-o1': {
     input: 15,
@@ -69,9 +77,17 @@ export const TOKEN_COST = {
     input: 0.15,
     output: 0.6,
   },
-  'gpt-4.1-2025-04-14': {
+  'gpt-4.1': {
     input: 2,
     output: 8,
+  },
+  'gpt-4.1-mini': {
+    input: 0.4,
+    output: 1.6,
+  },
+  'gpt-4.1-nano': {
+    input: 0.1,
+    output: 0.4,
   },
   o1: {
     input: 15,
