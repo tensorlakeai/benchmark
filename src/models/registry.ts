@@ -19,6 +19,7 @@ export const OPENAI_MODELS = [
   'o1',
   'o1-mini',
   'o3-mini',
+  'o4-mini',
   'gpt-4o-2024-11-20',
   'gpt-4.1',
   'gpt-4.1-mini',

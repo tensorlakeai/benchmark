@@ -89,6 +89,7 @@ export const TOKEN_COST = {
     input: 0.1,
     output: 0.4,
   },
+
   o1: {
     input: 15,
     output: 60,
@@ -98,6 +99,10 @@ export const TOKEN_COST = {
     output: 4.4,
   },
   'o3-mini': {
+    input: 1.1,
+    output: 4.4,
+  },
+  'o4-mini': {
     input: 1.1,
     output: 4.4,
   },
