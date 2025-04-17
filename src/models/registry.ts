@@ -46,6 +46,7 @@ export const GOOGLE_GENERATIVE_AI_MODELS = [
   'gemini-2.0-flash-001',
   'gemini-2.5-pro-exp-03-25',
   'gemini-2.5-pro-preview-03-25',
+  'gemini-2.5-flash-preview-04-17',
 ];
 export const OPENROUTER_MODELS = [
   'qwen/qwen2.5-vl-32b-instruct:free',
